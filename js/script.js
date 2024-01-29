@@ -1,7 +1,8 @@
-
-// Define variables for search button, search input, and UI instance
+// Get references to the search button and search input
 let searchBtn = document.querySelector('#searchBtn');
 let searchUser = document.querySelector('#searchUser');
+
+// Instantiate a new UI object
 let ui = new UI();
 
 // Event listener for the search button
