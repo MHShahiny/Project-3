@@ -1,25 +1,29 @@
+
+// Define variables for search button, search input, and UI instance
 let searchBtn = document.querySelector('#searchBtn');
 let searchUser = document.querySelector('#searchUser');
 let ui = new UI();
 
+// Event listener for the search button
 searchBtn.addEventListener('click', (e) => {
+    // Retrieve the text entered by the user
     let userText = searchUser.value;
+    // Check if the input is not empty
     if (userText != '') {
-        // Fetch API
+        // Fetch user data from GitHub API
         fetch(`https://api.github.com/users/${userText}`)
             .then(result => result.json())
             .then(data => {
-                //console.log(data);
+                // If user not found, display an alert
                 if (data.message == 'Not Found') {
-                    // Show Alert
                     ui.showAlert("User not Found!", "alert alert-danger");
                 } else {
-                    //Show Profile
+                    // If user found, display the user profile
                     ui.showProfile(data);
                 }
             })
     } else {
-        // Clear Profile
+        // If input is empty, clear any existing profile
         ui.clearProfile();
     }
 });
